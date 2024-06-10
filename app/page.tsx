@@ -1,3 +1,21 @@
+"use client";
+
+import { useState } from "react";
+import CodeEditor from "./components/CodeEditor";
+import { languages } from "./utils/utilities";
+import LanguageSelector from "./components/LanguageSelector";
+
 export default function Home() {
-  return <main>Code Pic</main>;
+  const [language, setLanguage] = useState(languages[0].name);
+
+  return (
+    <main className="h-screen flex flex-col items-center justify-between">
+      <header className="mt-6 w-[940px] fixed p-5 top-0 left-1/2 -translate-x-1/2 z-10 bg-[#191919] rounded border-[#3c3c3c] shadow-md">
+        <LanguageSelector />
+      </header>
+      <div className="code-editor-ref mt-56">
+        <CodeEditor language={language} />
+      </div>
+    </main>
+  );
 }
