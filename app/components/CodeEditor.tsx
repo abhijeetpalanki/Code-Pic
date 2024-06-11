@@ -71,8 +71,9 @@ const CodeEditor = ({
       }}
       onResize={handleResize}
       className="resize-container relative"
+      style={{ background: background }}
     >
-      <div className="code-block">
+      <div className="code-block" style={{ padding: currentPadding }}>
         <div className="code-title h-[52px] px-4 flex items-center justify-between bg-black bg-opacity-80 rounded-tl-lg rounded-tr-lg border-2 border-[rgba(249,249,249,0.08)] !shadow-[0_3px_10px_rgba(0,0,0,0.2)]">
           <div className="dots flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-[#ff5656]"></div>
@@ -88,14 +89,14 @@ const CodeEditor = ({
           </div>
 
           <div className="icon flex justify-center items-center p-1 bg-black bg-opacity-30 rounded-sm">
-            <img src={icon} alt="" />
+            <img src={icon} alt="" className="object-contain w-8 h-8" />
           </div>
         </div>
         <AceEditor
           value="function() { return 'Hello World'; }"
           name="code-editor"
           fontSize={16}
-          theme="monokai"
+          theme={theme.toLocaleLowerCase()}
           mode={language.toLocaleLowerCase()}
           showGutter={false}
           wrapEnabled={true}
