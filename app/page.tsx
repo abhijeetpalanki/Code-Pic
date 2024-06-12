@@ -25,6 +25,14 @@ export default function Home() {
     const editorElem = editorRef.current;
 
     if (editorElem) {
+      const handleElems = document.querySelectorAll(".handle") as any;
+      const cursorElem = document.querySelector(".ace_cursor") as any;
+
+      handleElems.forEach((elem: any) => {
+        elem.style.display = "none";
+      });
+      cursorElem.style.display = "none";
+
       const canvas = await html2canvas(editorElem);
       const image = canvas
         .toDataURL("image/png")
@@ -34,6 +42,11 @@ export default function Home() {
       link.download = "code.png";
       link.href = image;
       link.click();
+
+      handleElems.forEach((elem: any) => {
+        elem.style.display = "block";
+      });
+      cursorElem.style.display = "block";
     }
   };
 
