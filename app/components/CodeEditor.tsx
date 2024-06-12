@@ -22,9 +22,9 @@ import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-terminal";
 import "ace-builds/src-noconflict/theme-twilight";
 import { useEffect, useState } from "react";
+import { initialCode } from "../utils/utilities";
 
 interface CodeEditorProps {
-  onCodeChange: (code: string) => void;
   language: string;
   theme: string;
   icon: string;
@@ -33,7 +33,6 @@ interface CodeEditorProps {
 }
 
 const CodeEditor = ({
-  onCodeChange,
   language,
   theme,
   icon,
@@ -42,6 +41,12 @@ const CodeEditor = ({
 }: CodeEditorProps) => {
   const [width, setWidth] = useState(1000);
   const [height, setHeight] = useState<number | null>(500);
+  const [title, setTitle] = useState("Untitled-1");
+  const [code, setCode] = useState(initialCode);
+
+  const handleCodeChange = (newCode: string) => {
+    setCode(newCode);
+  };
 
   // @ts-ignore
   const handleResize = (evt, direction, ref, pos) => {
@@ -84,16 +89,19 @@ const CodeEditor = ({
           <div className="input-control w-full">
             <input
               type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               className="w-full text-[hsla(0,0%,100%,0.6)] outline-none font-medium text-center bg-transparent"
             />
           </div>
 
           <div className="icon flex justify-center items-center p-1 bg-black bg-opacity-30 rounded-sm">
-            <img src={icon} alt="" className="object-contain w-8 h-8" />
+            <img src={icon} alt="icon" className="object-contain w-8 h-8" />
           </div>
         </div>
         <AceEditor
-          value="function() { return 'Hello World'; }"
+          value={code}
+          onChange={handleCodeChange}
           name="code-editor"
           fontSize={16}
           theme={theme.toLocaleLowerCase()}

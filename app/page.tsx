@@ -7,6 +7,8 @@ import LanguageSelector from "./components/LanguageSelector";
 import ThemeSelector from "./components/ThemeSelector";
 import BackgroundSelector from "./components/BackgroundSelector";
 import PaddingSelector from "./components/PaddingSelector";
+import { Download } from "lucide-react";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [language, setLanguage] = useState(languages[0].name);
@@ -35,10 +37,16 @@ export default function Home() {
           currentPadding={currentPadding}
           setCurrentPadding={setCurrentPadding}
         />
+
+        <div className="export-btn self-center ml-auto">
+          <button className="flex items-center gap-3 py-2 px-3 rounded-md text-sm bg-blue-400 text-blue-400 font-medium bg-opacity-10 hover:bg-opacity-80 hover:text-slate-50 ease-in-out transition-all duration-300">
+            <Download />
+            Export PNG
+          </button>
+        </div>
       </header>
       <div className="code-editor-ref mt-56">
         <CodeEditor
-          onCodeChange={() => {}}
           language={language}
           icon={activeIcon}
           theme={theme}
@@ -46,6 +54,8 @@ export default function Home() {
           currentPadding={currentPadding}
         />
       </div>
+
+      <Footer />
     </main>
   );
 }
