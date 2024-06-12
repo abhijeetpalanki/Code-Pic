@@ -38,6 +38,7 @@ export default function Home() {
       </header>
       <div className="code-editor-ref mt-56">
         <CodeEditor
+          onCodeChange={() => {}}
           language={language}
           icon={activeIcon}
           theme={theme}

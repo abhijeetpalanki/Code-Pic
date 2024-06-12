@@ -46,7 +46,7 @@ const CodeEditor = ({
   // @ts-ignore
   const handleResize = (evt, direction, ref, pos) => {
     const newHeight = ref.style.height;
-    setHeight(parseInt(newHeight));
+    setHeight(parseInt(newHeight, 10));
   };
 
   const updateSize = () => {
@@ -100,6 +100,7 @@ const CodeEditor = ({
           mode={language.toLocaleLowerCase()}
           showGutter={false}
           wrapEnabled={true}
+          height={`calc(${height}px - ${currentPadding} - ${currentPadding} - 52px)`}
           showPrintMargin={false}
           highlightActiveLine={false}
           editorProps={{ $blockScrolling: true }}
