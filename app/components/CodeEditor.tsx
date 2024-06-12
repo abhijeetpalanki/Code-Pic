@@ -79,7 +79,7 @@ const CodeEditor = ({
       style={{ background: background }}
     >
       <div className="code-block" style={{ padding: currentPadding }}>
-        <div className="code-title h-[52px] px-4 flex items-center justify-between bg-black bg-opacity-80 rounded-tl-lg rounded-tr-lg border-2 border-[rgba(249,249,249,0.08)] !shadow-[0_3px_10px_rgba(0,0,0,0.2)]">
+        <div className="code-title h-[52px] px-4 flex items-center justify-between bg-black bg-opacity-80 rounded-tl-lg rounded-tr-lg border-2 border-[rgba(249,249,249,0.08)]">
           <div className="dots flex items-center gap-1">
             <div className="w-3 h-3 rounded-full bg-[#ff5656]"></div>
             <div className="w-3 h-3 rounded-full bg-[#ffbc6a]"></div>
@@ -112,7 +112,7 @@ const CodeEditor = ({
           showPrintMargin={false}
           highlightActiveLine={false}
           editorProps={{ $blockScrolling: true }}
-          className="!w-full bg-black/50 rounded-bl-lg rounded-br-lg border-t-0 shadow-[2px_3px_10px_rgba(0,0,0,0.2)] border-2 border-[rgba(249,249,249,0.08)] !font-medium !text-lg !leading-6"
+          className="!w-full bg-black/50 rounded-bl-lg rounded-br-lg border-t-0 border-2 border-[rgba(249,249,249,0.08)] !font-medium !text-lg !leading-6"
         />
       </div>
     </Resizable>
